@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Misión Taxonomía Viva 9-1</title>
+  <style>
+    :root{
+      --azul:#1f6feb; --verde:#22a06b; --amarillo:#ffd166; --rosa:#ef476f;
+      --fondo:#f4f9ff; --texto:#1f2937; --card:#ffffff; --borde:#dbeafe;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#e0f2fe,#fef9c3);color:var(--texto)}
+    header{background:linear-gradient(90deg,#1f6feb,#22a06b);color:#fff;padding:24px;text-align:center}
+    header h1{margin:0;font-size:2rem}
+    header p{margin:8px 0 0;font-size:1.05rem}
+    .contenedor{max-width:1150px;margin:auto;padding:20px}
+    .card{background:var(--card);border:2px solid var(--borde);border-radius:18px;padding:18px;margin:16px 0;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+    .login{max-width:460px;margin:30px auto}
+    input,select,textarea{width:100%;padding:11px;margin:8px 0;border:1px solid #cbd5e1;border-radius:10px;font-size:1rem}
+    button{background:var(--azul);color:white;border:none;border-radius:12px;padding:11px 18px;font-size:1rem;cursor:pointer;margin:5px}
+    button:hover{filter:brightness(.95)}
+    .btn-verde{background:var(--verde)} .btn-rosa{background:var(--rosa)}
+    .oculto{display:none}
+    nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:15px 0}
+    nav button{background:#0f766e}
+    h2{color:#155e75}
+    h3{color:#1d4ed8}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+    .nivel{border-left:8px solid var(--verde)}
+    .reto{border-left:8px solid var(--rosa)}
+    .actividad{border-left:8px solid var(--azul)}
+    .etiqueta{display:inline-block;background:#dbeafe;color:#1d4ed8;border-radius:999px;padding:4px 10px;font-size:.85rem;margin:3px}
+    .small{font-size:.92rem;color:#475569}
+    table{width:100%;border-collapse:collapse;background:white}
+    th,td{border:1px solid #cbd5e1;padding:10px;text-align:left}
+    th{background:#1f6feb;color:white}
+    .ok{color:#15803d;font-weight:bold}
+    footer{text-align:center;padding:20px;color:#475569}
+    .alerta{background:#fff7ed;border:2px solid #fed7aa;padding:12px;border-radius:14px}
+  </style>
+</head>
+<body>
+<header>
+  <h1>🌿 Misión Taxonomía Viva 9-1</h1>
+  <p>Colegio Técnico Lorenzo de Salazar · Jesús María, Santander</p>
+  <p>Biología · Grado Noveno · Clasificación de los seres vivos</p>
+</header>
+
+<div class="contenedor">
+  <section id="login" class="card login">
+    <h2>Ingreso de estudiantes</h2>
+    <p class="small">Usuarios disponibles para 9-1: <b>estudiante01</b> hasta <b>estudiante45</b>.</p>
+    <label>Usuario</label>
+    <input id="usuario" placeholder="Ejemplo: estudiante01">
+    <label>Contraseña</label>
+    <input id="clave" type="password" placeholder="Ejemplo: bio2026-01">
+    <button onclick="ingresar()">Ingresar</button>
+    <p id="mensajeLogin" class="small"></p>
+    <div class="alerta">
+      <b>Ejemplo:</b> estudiante01 / bio2026-01
+    </div>
+  </section>
+
+  <section id="app" class="oculto">
+    <div class="card">
+      <h2>Bienvenido/a, <span id="nombreEstudiante"></span> 👩‍🔬🧑‍🔬</h2>
+      <p>Desarrolla las actividades en orden. Tus respuestas quedan guardadas en este dispositivo. Al final puedes copiarlas o mostrarlas a la docente.</p>
+      <nav>
+        <button onclick="mostrar('inicio')">Inicio</button>
+        <button onclick="mostrar('niveles')">Niveles</button>
+        <button onclick="mostrar('actividades')">Actividades</button>
+        <button onclick="mostrar('cladograma')">Cladograma</button>
+        <button onclick="mostrar('evidencias')">Mis respuestas</button>
+        <button class="btn-rosa" onclick="salir()">Salir</button>
+      </nav>
+    </div>
+
+    <section id="inicio" class="panel card">
+      <h2>🌱 Propósito de la misión</h2>
+      <p>Comprender cómo se organizan los seres vivos mediante la taxonomía: dominio, reino, filo, clase, orden, familia, género y especie.</p>
+      <div class="grid">
+        <div class="card nivel"><h3>Meta 1</h3><p>Reconocer los niveles taxonómicos.</p></div>
+        <div class="card nivel"><h3>Meta 2</h3><p>Diferenciar características generales y específicas.</p></div>
+        <div class="card nivel"><h3>Meta 3</h3><p>Interpretar relaciones evolutivas mediante cladogramas.</p></div>
+      </div>
+    </section>
+
+    <section id="niveles" class="panel card oculto">
+      <h2>🧬 Niveles taxonómicos</h2>
+      <table>
+        <tr><th>Taxón</th><th>Idea clave</th><th>Ejemplo con la vaca</th></tr>
+        <tr><td>Dominio</td><td>Tipo de célula</td><td>Eukarya</td></tr>
+        <tr><td>Reino</td><td>Forma general de vida</td><td>Animalia</td></tr>
+        <tr><td>Filo</td><td>Organización del cuerpo</td><td>Chordata</td></tr>
+        <tr><td>Clase</td><td>Grupo general</td><td>Mammalia</td></tr>
+        <tr><td>Orden</td><td>Grupo específico</td><td>Artiodactyla</td></tr>
+        <tr><td>Familia</td><td>Grupo cercano</td><td>Bovidae</td></tr>
+        <tr><td>Género</td><td>Parentesco directo</td><td><i>Bos</i></td></tr>
+        <tr><td>Especie</td><td>Organismos semejantes</td><td><i>Bos taurus</i></td></tr>
+      </table>
+    </section>
+
+    <section id="actividades" class="panel card oculto">
+      <h2>📝 Actividades para responder</h2>
+
+      <div class="card actividad">
+        <h3>Actividad 1. Ordena los taxones</h3>
+        <p>Escribe los niveles taxonómicos desde el más general hasta el más específico.</p>
+        <textarea id="act1" rows="4"></textarea>
+      </div>
+
+      <div class="card actividad">
+        <h3>Actividad 2. Clase y orden</h3>
+        <p>Explica con tus palabras la diferencia entre clase y orden.</p>
+        <textarea id="act2" rows="4"></textarea>
+      </div>
+
+      <div class="card actividad">
+        <h3>Actividad 3. Familia, género y especie</h3>
+        <p>Define familia, género y especie usando un ejemplo.</p>
+        <textarea id="act3" rows="5"></textarea>
+      </div>
+
+      <div class="card actividad">
+        <h3>Actividad 4. Ejemplo de clasificación</h3>
+        <p>Escoge un ser vivo de tu entorno y escribe su posible clasificación: reino, filo, clase y orden.</p>
+        <textarea id="act4" rows="5"></textarea>
+      </div>
+
+      <button class="btn-verde" onclick="guardar()">Guardar respuestas</button>
+    </section>
+
+    <section id="cladograma" class="panel card oculto">
+      <h2>🌳 Cladograma</h2>
+      <p>Un cladograma es como un árbol familiar de los seres vivos. Muestra relaciones de parentesco evolutivo.</p>
+      <div class="grid">
+        <div class="card reto"><h3>Nodo</h3><p>Punto donde una rama se divide. Representa un ancestro común.</p></div>
+        <div class="card reto"><h3>Rama</h3><p>Línea que muestra el camino evolutivo de un grupo.</p></div>
+        <div class="card reto"><h3>Ancestro común</h3><p>Organismo antiguo del cual descienden otros grupos.</p></div>
+        <div class="card reto"><h3>Descendientes</h3><p>Organismos que provienen de un ancestro común.</p></div>
+        <div class="card reto"><h3>Rasgo compartido</h3><p>Característica que varios organismos heredaron.</p></div>
+        <div class="card reto"><h3>Clado</h3><p>Grupo formado por un ancestro común y todos sus descendientes.</p></div>
+      </div>
+      <h3>Actividad 5. Interpreta el árbol</h3>
+      <p>Dibuja en tu cuaderno un árbol sencillo con 4 animales y señala: raíz, nodo, rama, descendientes y rasgo compartido.</p>
+      <textarea id="act5" rows="5" placeholder="Escribe aquí qué animales escogiste y qué rasgo comparten..."></textarea>
+      <button class="btn-verde" onclick="guardar()">Guardar respuestas</button>
+    </section>
+
+    <section id="evidencias" class="panel card oculto">
+      <h2>📌 Mis respuestas guardadas</h2>
+      <p class="small">Copie este texto o muéstreselo a la docente.</p>
+      <textarea id="salida" rows="14" readonly></textarea>
+      <br>
+      <button onclick="generarResumen()">Ver mis respuestas</button>
+      <button class="btn-verde" onclick="descargar()">Descargar evidencia</button>
+      <button class="btn-rosa" onclick="borrarProgreso()">Borrar mis respuestas</button>
+    </section>
+  </section>
+</div>
+
+<footer>
+  Proyecto de aula · Taxonomía Viva 9-1 · Elaborado para uso pedagógico
+</footer>
+
+<script>
+  const usuarios = {};
+  for(let i=1; i<=45; i++){
+    const n = String(i).padStart(2,"0");
+    usuarios["estudiante"+n] = "bio2026-"+n;
+  }
+  usuarios["docente"] = "taxonomia2026";
+
+  let usuarioActual = localStorage.getItem("usuarioActual9_1") || "";
+
+  function ingresar(){
+    const u = document.getElementById("usuario").value.trim();
+    const c = document.getElementById("clave").value.trim();
+    const msg = document.getElementById("mensajeLogin");
+    if(usuarios[u] && usuarios[u] === c){
+      usuarioActual = u;
+      localStorage.setItem("usuarioActual9_1", u);
+      document.getElementById("login").classList.add("oculto");
+      document.getElementById("app").classList.remove("oculto");
+      document.getElementById("nombreEstudiante").textContent = u;
+      cargar();
+      mostrar("inicio");
+    } else {
+      msg.textContent = "Usuario o contraseña incorrectos. Revise el número asignado.";
+      msg.style.color = "red";
+    }
+  }
+
+  function mostrar(id){
+    document.querySelectorAll(".panel").forEach(p=>p.classList.add("oculto"));
+    document.getElementById(id).classList.remove("oculto");
+    if(id==="evidencias") generarResumen();
+  }
+
+  function claveDatos(){
+    return "taxonomia_9_1_" + usuarioActual;
+  }
+
+  function guardar(){
+    if(!usuarioActual){alert("Primero ingrese con usuario."); return;}
+    const datos = {
+      act1: document.getElementById("act1").value,
+      act2: document.getElementById("act2").value,
+      act3: document.getElementById("act3").value,
+      act4: document.getElementById("act4").value,
+      act5: document.getElementById("act5").value,
+      fecha: new Date().toLocaleString()
+    };
+    localStorage.setItem(claveDatos(), JSON.stringify(datos));
+    alert("Respuestas guardadas correctamente.");
+  }
+
+  function cargar(){
+    const raw = localStorage.getItem(claveDatos());
+    if(!raw) return;
+    const d = JSON.parse(raw);
+    ["act1","act2","act3","act4","act5"].forEach(id=>{
+      if(document.getElementById(id)) document.getElementById(id).value = d[id] || "";
+    });
+  }
+
+  function generarResumen(){
+    const raw = localStorage.getItem(claveDatos());
+    let d = raw ? JSON.parse(raw) : {};
+    const texto =
+`EVIDENCIA - TAXONOMÍA VIVA 9-1
+Estudiante: ${usuarioActual}
+Fecha: ${d.fecha || new Date().toLocaleString()}
+
+Actividad 1. Ordena los taxones:
+${d.act1 || ""}
+
+Actividad 2. Clase y orden:
+${d.act2 || ""}
+
+Actividad 3. Familia, género y especie:
+${d.act3 || ""}
+
+Actividad 4. Ejemplo de clasificación:
+${d.act4 || ""}
+
+Actividad 5. Cladograma:
+${d.act5 || ""}
+`;
+    document.getElementById("salida").value = texto;
+  }
+
+  function descargar(){
+    generarResumen();
+    const texto = document.getElementById("salida").value;
+    const blob = new Blob([texto], {type:"text/plain;charset=utf-8"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = usuarioActual + "_taxonomia_9_1.txt";
+    a.click();
+  }
+
+  function borrarProgreso(){
+    if(confirm("¿Desea borrar las respuestas guardadas en este dispositivo?")){
+      localStorage.removeItem(claveDatos());
+      ["act1","act2","act3","act4","act5"].forEach(id=>document.getElementById(id).value="");
+      generarResumen();
+    }
+  }
+
+  function salir(){
+    localStorage.removeItem("usuarioActual9_1");
+    location.reload();
+  }
+
+  if(usuarioActual){
+    document.getElementById("login").classList.add("oculto");
+    document.getElementById("app").classList.remove("oculto");
+    document.getElementById("nombreEstudiante").textContent = usuarioActual;
+    cargar();
+  }
+</script>
+</body>
+</html>
